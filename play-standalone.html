@@ -6,7 +6,7 @@
 <title>奶蛙弹幕祭 · Naiwa Danmaku</title>
 
 <style>
-﻿:root {
+:root {
   --ink: #0b0b17;
   --paper: #f6efe2;
   --accent: #ffcf5c;
@@ -62,7 +62,9 @@ html, body {
 
 .screen.hidden { display: none; }
 
-.logo { display: flex; align-items: center; gap: 14px; }
+.screen > * { max-width: 100%; }
+
+.logo { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px; }
 .logo img { height: clamp(56px, 12vh, 104px); filter: drop-shadow(0 6px 12px #0008); }
 .logo h1 {
   margin: 0;
@@ -103,7 +105,7 @@ html, body {
 }
 .menu button.on span { color: #241a05aa; }
 
-.hint { margin: 0; font-size: clamp(10px, 1.6vh, 13px); color: #ffffff8a; line-height: 1.7; }
+.hint { margin: 0; font-size: clamp(10px, 1.6vh, 13px); color: #ffffff8a; line-height: 1.7; overflow-wrap: anywhere; }
 .best { margin: 2px 0 0; font-size: clamp(11px, 1.7vh, 14px); color: #ffffffb0; }
 .best b { color: var(--accent); }
 
@@ -165,6 +167,32 @@ html, body {
   display: none;
 }
 
+/* ---- 手机 / 窄屏 ---- */
+@media (max-width: 620px) {
+  .screen { padding: 3.5vh 4vw; gap: 8px; }
+  .logo { gap: 8px; }
+  .logo img { height: clamp(38px, 11vw, 72px); }
+  .logo h1 { font-size: clamp(20px, 8.2vw, 38px); letter-spacing: 0.03em; }
+  .sub { letter-spacing: 0.2em; font-size: 9px; }
+  .menu { gap: 6px; margin: 8px 0 2px; }
+  .menu button { font-size: 12px; padding: 0.5em 0.85em; }
+  .hint { font-size: 10.5px; line-height: 1.55; }
+  .best { font-size: 12px; }
+  #over h2, #pause h2 { font-size: clamp(20px, 7.5vw, 32px); }
+  .stats { grid-template-columns: repeat(2, minmax(84px, auto)); gap: 4px 16px; font-size: 12px; }
+}
+
+/* ---- 横屏手机（高度很矮） ---- */
+@media (max-height: 540px) {
+  .screen { padding: 2vh 4vw; gap: 5px; }
+  .logo img { height: clamp(30px, 8vh, 52px); }
+  .logo h1 { font-size: clamp(18px, 5vh, 30px); }
+  .sub, .hint { display: none; }
+  .menu button { font-size: 12px; padding: 0.45em 0.8em; }
+  #over h2, #pause h2 { font-size: clamp(18px, 4.5vh, 26px); }
+  .stats { font-size: 11px; gap: 3px 14px; }
+}
+
 </style>
 </head>
 <body>
@@ -182,8 +210,8 @@ html, body {
       <button data-diff="normal" class="on">Normal　<span>正经</span></button>
       <button data-diff="lunatic">Lunatic　<span>想不开</span></button>
     </div>
-    <p class="hint">↑↓←→ / WASD 移动　Z 发射小奶蛙　X 放符　Shift 慢速瞄准　P 暂停</p>
-    <p class="best">最高分 <b id="bestScore">0</b>　·　按 Enter 或点击开始</p>
+    <p class="hint">↑↓←→ / WASD 移动 · Z 发射小奶蛙 · X 放符 · Shift 慢速瞄准 · P 暂停</p>
+    <p class="best">最高分 <b id="bestScore">0</b> · 按 Enter 或点击开始</p>
   </div>
 
   <div id="pause" class="screen hidden">
@@ -194,7 +222,7 @@ html, body {
   <div id="over" class="screen hidden">
     <h2 id="overTitle">游戏结束</h2>
     <div class="stats" id="overStats"></div>
-    <p class="hint">按 R 重来　Esc 回标题</p>
+    <p class="hint">按 R 重来 · Esc 回标题</p>
   </div>
 
   <div id="loading">加载中…</div>
