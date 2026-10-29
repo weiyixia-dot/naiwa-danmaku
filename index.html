@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>奶蛙弹幕祭 · Naiwa Danmaku</title>
+<link rel="icon" href="assets/player/idle.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="480" height="720"></canvas>
+
+  <div id="title" class="screen">
+    <div class="logo">
+      <img src="assets/player/idle.png" alt="">
+      <h1>奶蛙弹幕祭</h1>
+    </div>
+    <p class="sub">NAIWA&nbsp;DANMAKU&nbsp;FESTIVAL</p>
+    <div class="menu">
+      <button data-diff="easy">Easy　<span>散步</span></button>
+      <button data-diff="normal" class="on">Normal　<span>正经</span></button>
+      <button data-diff="lunatic">Lunatic　<span>想不开</span></button>
+    </div>
+    <p class="hint">↑↓←→ / WASD 移动　Z 发射小奶蛙　X 放符　Shift 慢速瞄准　P 暂停</p>
+    <p class="best">最高分 <b id="bestScore">0</b>　·　按 Enter 或点击开始</p>
+  </div>
+
+  <div id="pause" class="screen hidden">
+    <h2>暂停</h2>
+    <p>P 继续　R 重来　Esc 回标题</p>
+  </div>
+
+  <div id="over" class="screen hidden">
+    <h2 id="overTitle">游戏结束</h2>
+    <div class="stats" id="overStats"></div>
+    <p class="hint">按 R 重来　Esc 回标题</p>
+  </div>
+
+  <div id="loading">加载中…</div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
